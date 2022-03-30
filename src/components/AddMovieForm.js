@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const AddMovieForm = (props) => {
-
   const { push } = useHistory();
   let { id } = useParams();
 
@@ -19,16 +18,16 @@ const AddMovieForm = (props) => {
   // console.log(movie)
 
   useEffect(() => {
-  	// console.log(evt)
-  		// title: movie.id,
-  	// axios.get(`http://localhost:9000/api/movies/${id}`)
-	//   .then(res => {
-	// 	  setMovie(res.data)
-	//   })
-	//   .catch(err => {
-	// 	  debugger
-	//   })
-  }, [])
+    // console.log(evt)
+    // title: movie.id,
+    // axios.get(`http://localhost:9000/api/movies/${id}`)
+    //   .then(res => {
+    // 	  setMovie(res.data)
+    //   })
+    //   .catch(err => {
+    // 	  debugger
+    //   })
+  }, []);
 
   const handleChange = (e) => {
     setMovie({
@@ -39,19 +38,21 @@ const AddMovieForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:9000/api/movies/`, movie)
-        .then(res => {
-            
-            console.log(res)
-        })
-        .catch(err => {
-            debugger
-        })
+    axios
+      .post(`http://localhost:9000/api/movies/`, movie)
+      .then((res) => {
+        setMovies(res.data)
+        console.log(res);
+        push('/movies')
+      })
+      .catch((err) => {
+        debugger;
+      });
     // axios
     //   .put(`http://localhost:9000/api/movies/${id}`, movie)
     //   .then((res) => {
     //     setMovies(res.data)
-	// 	console.log(res)
+    // 	console.log(res)
     //     push(`/movies/${movie.id}`)
     //   })
     //   .catch((err) => {
