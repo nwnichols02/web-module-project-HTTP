@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
-
+import AddMovieForm from "./components/AddMovieForm";
 import MovieHeader from './components/MovieHeader';
 import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
-
 import axios from 'axios';
 
 const App = (props) => {
@@ -57,6 +55,10 @@ const App = (props) => {
           <Switch>
             <Route path="/movies/edit/:id">
               <EditMovieForm setMovies={setMovies} />
+            </Route>
+
+            <Route path='/movies/add'>
+              <AddMovieForm/>
             </Route>
 
             <Route path="/movies/:id">
